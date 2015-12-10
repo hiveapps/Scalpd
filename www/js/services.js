@@ -1,6 +1,6 @@
-angular.module('scalpd.services', [])
+var scalpd = angular.module('scalpd.services', [])
 
-.factory('Chats', function() {
+scalpd.factory('Chats', function() {
   // Might use a resource here that returns a JSON array
 
   // Some fake testing data
@@ -47,4 +47,17 @@ angular.module('scalpd.services', [])
       return null;
     }
   };
+});
+
+//Post Service
+scalpd.factory('postService', function($firebaseArray) {
+	var fb = new Firebase("https://scalpd.firebaseio.com/posts");
+	var posts = $firebaseArray(fb);
+	var postService= {
+		all: posts,
+		get: function(postID) {
+			return posts.$getRecord(postID);
+		}
+	};
+	return postService;
 });

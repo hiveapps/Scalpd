@@ -1,8 +1,8 @@
-angular.module('scalpd.controllers', [])
+var scalpd = angular.module('scalpd.controllers', [])
 
-.controller('ThreadCtrl', function($scope) {})
+scalpd.controller('ThreadCtrl', function($scope) {});
 
-.controller('ChatsCtrl', function($scope, Chats) {
+scalpd.controller('ChatsCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -15,14 +15,32 @@ angular.module('scalpd.controllers', [])
   $scope.remove = function(chat) {
     Chats.remove(chat);
   };
-})
+});
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
+scalpd.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
   $scope.chat = Chats.get($stateParams.chatId);
-})
+});
 
-.controller('AccountCtrl', function($scope) {
+scalpd.controller('AccountCtrl', function($scope) {
   $scope.settings = {
     enableFriends: true
   };
+});
+
+scalpd.controller('addController',function($scope,$firebaseArray, $state, postService){
+	$scope.submitPost = function(){
+		$scope.newPost = postService.all;
+		$scope.newPost.$add({
+			postTitle: $scope.postTitle,
+			postDescription: $scope.postDescription
+		});
+    $scope.master= null;
+    
+      $scope.reset = function() {
+        $scope.postTitle = angular.copy($scope.master);
+        $scope.postDescription = angular.copy($scope.master);
+        if ($scope.form) $scope.form.$setPristine();
+      };
+      $scope.reset();
+	};
 });
