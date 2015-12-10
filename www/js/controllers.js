@@ -1,4 +1,4 @@
-angular.module('scrapd.controllers', [])
+angular.module('scalpd.controllers', [])
 
 .controller('DashCtrl', function($scope) {})
 
