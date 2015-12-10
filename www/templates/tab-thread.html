@@ -5,23 +5,18 @@
       </button>
     </a>
   </ion-nav-buttons>
-  <ion-content class="padding">
+  <ion-content class="padding" ng-controller="ThreadCtrl">
     
-    <div class="list card">
+    <div class="list card" ng-repeat="post in posts">
 
       <div class="item item-avatar">
         <img src="mcfly.jpg">
-        <h2>Dukes - Malibu, CA</h2>
+        <h2>{{post.postTitle}}</h2>
         <p>Saturday, February 14 - 6:00pm</p>
       </div>
     
       <div class="item item-body">
-        <img class="full-image" src="delorean.jpg">
-        <p>
-          This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
-          the content is from a card-body consisting of an image and paragraph text. The footer
-          consists of tabs, icons aligned left, within the card-footer.
-        </p>
+        <p>{{post.postDescription}}</p>
       </div>
     
       <div class="item tabs tabs-secondary tabs-icon-left">
@@ -52,11 +47,14 @@
             <label class="item item-input item-stacked-label myBorder" style="background-color: rgba(69, 196, 150, 0.3);">
               <textarea rows="5" cols="10" placeholder="Give your post a title!" ng-model="postTitle" style="resize: none; background-color: transparent;"></textarea>
             </label>
+            <label class="item item-input item-stacked-label myBorder" style="background-color: rgba(69, 196, 150, 0.3);">
+              <textarea rows="5" cols="10" placeholder="Give your post a date!" ng-model="postDate" style="resize: none; background-color: transparent;"></textarea>
+            </label>
             <label class="item item-input item-stacked-label myBorder" style="border: none;">
               <textarea rows="10" cols="10" placeholder="Describe your missed connection!" ng-model="postDescription" style="resize: none; background-color: transparent;"></textarea>
             </label>
             <label class="item" style="border: none; background-color: transparent;">
-              <button class="button button-block button-positive" ng-model="addButton" ng-disabled="!postTitle||!postDescription" ng-click="submitPost(); closeModal(); reset()">
+              <button class="button button-block button-positive" ng-model="addButton" ng-disabled="!postTitle||!postDate||!postDescription" ng-click="submitPost(); closeModal(); reset()">
               Post
               </button>
             </label>

@@ -44,8 +44,7 @@ angular.module('scalpd', ['ionic', 'scalpd.controllers', 'scalpd.services', 'fir
     url: '/thread',
     views: {
       'tab-thread': {
-        templateUrl: 'templates/tab-thread.html',
-        controller: 'ThreadCtrl'
+        templateUrl: 'templates/tab-thread.html'
       }
     }
   })

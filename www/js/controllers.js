@@ -33,17 +33,24 @@ scalpd.controller('addController',function($scope,$firebaseArray, $state, postSe
 		$scope.newPost = postService.all;
 		$scope.newPost.$add({
 			postTitle: $scope.postTitle,
-			postDescription: $scope.postDescription
+			postDescription: $scope.postDescription,
+      postDate: $scope.postDate
 		});
     $scope.master= null;
     
       $scope.reset = function() {
         $scope.postTitle = angular.copy($scope.master);
         $scope.postDescription = angular.copy($scope.master);
+        $scope.postDate = angular.copy($scope.master);
         if ($scope.form) $scope.form.$setPristine();
       };
       $scope.reset();
 	};
+});
+
+//Thread controller used to display all posts
+scalpd.controller('ThreadCtrl',function($scope,postService){
+	$scope.posts = postService.all;
 });
 
 //Post controller to add a modal upon button click in thread
