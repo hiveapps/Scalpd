@@ -1,4 +1,10 @@
 <ion-view view-title="Available">
+  <ion-nav-buttons side="right">
+    <a ng-controller="PostCtrl" ng-click="openModal()">    
+      <button class="button button-icon button-clear ion-compose" style="color: #000000;">
+      </button>
+    </a>
+  </ion-nav-buttons>
   <ion-content class="padding">
     
     <div class="list card">
@@ -30,6 +36,22 @@
       </div>
     
     </div>
+    
+    <script id="post-modal.html" type="text/ng-template">
+      <ion-modal-view>
+        <ion-header-bar>
+          <div style="margin-left: 5px">
+            <button class="button button-small button-clear" style="color: #000000; font-size: 16px;" ng-click="closeModal();">
+              Cancel
+            </button>
+          </div>
+          <h1 class="title">Write Post</h1>
+        </ion-header-bar>
+        <ion-content>
+          <p>Testing Content Area
+        </ion-content>
+      </ion-modal-view>
+    </script>
     
   </ion-content>
 </ion-view>

@@ -27,6 +27,7 @@ scalpd.controller('AccountCtrl', function($scope) {
   };
 });
 
+//Add controller to add posts into firebase
 scalpd.controller('addController',function($scope,$firebaseArray, $state, postService){
 	$scope.submitPost = function(){
 		$scope.newPost = postService.all;
@@ -43,4 +44,27 @@ scalpd.controller('addController',function($scope,$firebaseArray, $state, postSe
       };
       $scope.reset();
 	};
+});
+
+//Post controller to add a modal upon button click in thread
+scalpd.controller('PostCtrl', function($scope, $ionicModal) {
+   
+  $ionicModal.fromTemplateUrl('post-modal.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal = modal
+  })  
+
+  $scope.openModal = function() {
+    $scope.modal.show()
+  }
+
+  $scope.closeModal = function() {
+    $scope.modal.hide();
+  };
+
+  $scope.$on('$destroy', function() {
+    $scope.modal.remove();
+  });
 });
