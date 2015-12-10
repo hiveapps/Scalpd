@@ -38,19 +38,32 @@
     </div>
     
     <script id="post-modal.html" type="text/ng-template">
-      <ion-modal-view>
+      <div class="modal">
         <ion-header-bar>
           <div style="margin-left: 5px">
-            <button class="button button-small button-clear" style="color: #000000; font-size: 16px;" ng-click="closeModal();">
+            <button class="button button-small button-clear" style="font-size: 16px;" ng-click="closeModal(); reset()">
               Cancel
             </button>
           </div>
-          <h1 class="title">Write Post</h1>
+          <h1 class="title" style="color: white;">Write Post</h1>
         </ion-header-bar>
-        <ion-content>
-          <p>Testing Content Area
+        <ion-content style="background-color: #ffffff;">
+          <form class="list" name="postForm" method="POST" ng-controller="addController">
+            <label class="item item-input item-stacked-label myBorder" style="background-color: rgba(69, 196, 150, 0.3);">
+              <textarea rows="5" cols="10" placeholder="Give your post a title!" ng-model="postTitle" style="resize: none; background-color: transparent;"></textarea>
+            </label>
+            <label class="item item-input item-stacked-label myBorder" style="border: none;">
+              <textarea rows="10" cols="10" placeholder="Describe your missed connection!" ng-model="postDescription" style="resize: none; background-color: transparent;"></textarea>
+            </label>
+            <label class="item" style="border: none; background-color: transparent;">
+              <button class="button button-block button-positive" ng-model="addButton" ng-disabled="!postTitle||!postDescription" ng-click="submitPost(); closeModal(); reset()">
+              Post
+              </button>
+            </label>
+          </form>
+          
         </ion-content>
-      </ion-modal-view>
+      </div>
     </script>
     
   </ion-content>
