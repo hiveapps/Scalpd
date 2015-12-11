@@ -45,6 +45,38 @@ scalpd.controller('AppCtrl', function($scope, $state, $ionicSlideBoxDelegate, $i
   });
 });
 
+//Totally functioning simple login
+scalpd.controller("LoginCtrl", function($scope, $firebaseAuth, $state){
+var users = new Firebase("https://scalpd.firebaseio.com/");
+
+  $scope.register = function(username, password){
+    users.createUser({
+      email    : username,
+      password : password
+    }, function(error, userData) {
+      if (error) {
+        console.log("Error creating user:", error);
+      } else {
+        $state.go('tab.thread');
+        $scope.modal.hide();
+      }
+    });
+  }
+  $scope.login = function(username, password){
+    users.authWithPassword({
+      email    : username,
+      password : password
+    }, function(error, authData) {
+      if (error) {
+        console.log("Login Failed!", error);
+      } else {
+        $state.go('tab.thread');
+        $scope.modal.hide();
+      }
+    });
+  }
+});
+
 scalpd.controller('ChatsCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
