@@ -3,7 +3,7 @@ var scalpd = angular.module('scalpd.controllers', [])
 scalpd.controller('ThreadCtrl', function($scope) {});
 
 //Intro Controller
-scalpd.controller('AppCtrl', function($scope, $state, $ionicSlideBoxDelegate) {
+scalpd.controller('AppCtrl', function($scope, $state, $ionicSlideBoxDelegate, $ionicModal) {
  
   // Called to navigate to the main app
   $scope.next = function() {
@@ -23,6 +23,26 @@ scalpd.controller('AppCtrl', function($scope, $state, $ionicSlideBoxDelegate) {
   $scope.slideChanged = function(index) {
     $scope.slideIndex = index;
   };
+  
+  // Called when "Login" button is pressed to open modal
+  $ionicModal.fromTemplateUrl('login-modal.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal = modal
+  })  
+
+  $scope.openModal = function() {
+    $scope.modal.show()
+  }
+
+  $scope.closeModal = function() {
+    $scope.modal.hide();
+  };
+
+  $scope.$on('$destroy', function() {
+    $scope.modal.remove();
+  });
 });
 
 scalpd.controller('ChatsCtrl', function($scope, Chats) {
