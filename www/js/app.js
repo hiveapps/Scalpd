@@ -39,7 +39,11 @@ angular.module('scalpd', ['ionic', 'scalpd.controllers', 'scalpd.services', 'fir
   })
 
   // Each tab has its own nav history stack:
-
+  .state('login', {
+      url: '/login',
+      templateUrl: 'templates/login.html',
+      controller: 'AppCtrl'
+  })
   .state('tab.thread', {
     url: '/thread',
     views: {
@@ -79,6 +83,6 @@ angular.module('scalpd', ['ionic', 'scalpd.controllers', 'scalpd.services', 'fir
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/thread');
+  $urlRouterProvider.otherwise('/login');
 
 });

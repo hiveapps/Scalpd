@@ -2,6 +2,29 @@ var scalpd = angular.module('scalpd.controllers', [])
 
 scalpd.controller('ThreadCtrl', function($scope) {});
 
+//Intro Controller
+scalpd.controller('AppCtrl', function($scope, $state, $ionicSlideBoxDelegate) {
+ 
+  // Called to navigate to the main app
+  $scope.next = function() {
+    $ionicSlideBoxDelegate.next();
+  };
+  $scope.previous = function() {
+    $ionicSlideBoxDelegate.previous();
+  };
+  $scope.skip = function() {
+    $ionicSlideBoxDelegate.slide(4);
+  };
+  $scope.restart = function() {
+    $ionicSlideBoxDelegate.slide(0);
+  };
+
+  // Called each time the slide changes
+  $scope.slideChanged = function(index) {
+    $scope.slideIndex = index;
+  };
+});
+
 scalpd.controller('ChatsCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
