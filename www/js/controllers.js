@@ -171,9 +171,8 @@ scalpd.controller("ClickToEditCtrl", function($scope) {
 });
 
 
-//Account Controller, this sets each account settings
-//default values and will be used to send this data
-//to firebase down the road.
+//Account Controller, this allows the user to toggle their
+//push notifications and also registers their logout.
 scalpd.controller('AccountCtrl', function($scope, $state, $ionicModal) {
   
   //Push Notification Settings
@@ -183,14 +182,8 @@ scalpd.controller('AccountCtrl', function($scope, $state, $ionicModal) {
   
   $scope.pushNotification = { checked: true };
   
-  //Email Notification Settings
-  $scope.emailNotificationChange = function() {
-    console.log('Email Notification Change', $scope.emailNotification.checked);
-  };
-  
-  $scope.emailNotification = {checked: true};
-  
-  //Logout Functionality
+  //Logout Functionality !!Need to add in "offAuth" functionality
+  //for firebase to unsync the logged session
   $scope.logout = function() {
     $state.go('login');
   };
