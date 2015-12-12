@@ -1,7 +1,129 @@
 <ion-view view-title="Account">
-  
-  <ion-content>
-  
-  </ion-content>
+  <ion-content class="myContent">
+    <div class="list" style="margin-bottom: 25px;">
+        
+      <div class="item item-divider"> 
+        Notification Settings
+      </div>
+      
+	  <!-- This toggles the Push Notifications through ionic which will
+	  include a notification to check their email -->
+      <ion-toggle ng-model="pushNotification.checked" ng-change="pushNotificationChange()">
+        Push Notifications
+      </ion-toggle>
+      
+	  <!-- This toggles the Email Notification service which will be 
+	  used to notify users once they have bought a reservation, the 
+	  email will include the reservation information -->
+      <ion-toggle ng-model="emailNotification.checked" ng-change="emailNotificationChange()">
+        Newsletter
+      </ion-toggle>
+      
+      <div class="item item-divider">
+        Legal
+      </div>
+      
+      <a ui-sref="tab.terms" style="text-decoration:none;">
+        <div class="item item-icon-left item-icon-right">
+          <i class="icon ion-clipboard" style="color: #000; font-size: 20px;"></i>
+          Terms & Conditions
+          <i class="icon ion-chevron-right" style="color: #009161; font-size: 20px;"></i>
+        </div>
+      </a>
+      
+      <a ui-sref="tab.terms" style="text-decoration:none;">
+        <div class="item item-icon-left item-icon-right">
+          <i class="icon ion-clipboard" style="color: #000; font-size: 20px;"></i>
+          Privacy Policy
+          <i class="icon ion-chevron-right" style="color: #009161; font-size: 20px;"></i>
+        </div>
+      </a>
+      
+      <div class="item item-divider">
+      </div>
+      <a class="item item-icon-left" href="#" ng-click="ref.unauth(); logout()">
+        <i class="icon ion-power" style="color: #ff3823;"></i>
+        Logout
+      </a>
+      
+    </div>
     
+  </ion-content>
 </ion-view>
+
+
+<!-- 
+    <div class="list">
+      <div class="item item-divider">
+        Account
+      </div>
+      <a ui-sref="tab.editprofile" style="text-decoration:none;">
+        <div class="item item-icon-left item-icon-right">
+          <i class="icon ion-person" style="color: #000;"></i>
+          Edit Profile
+          <i class="icon ion-chevron-right" style="color: #009161;"></i>
+        </div>
+      </a>
+      
+      <div class="item item-divider">
+        Settings
+      </div>
+      <a ui-sref="tab.notificationsettings" style="text-decoration:none;">
+        <div class="item item-icon-left item-icon-right">
+          <i class="icon ion-ios-bell" style="color: #009161;"></i>
+          Push Notification Settings
+          <i class="icon ion-chevron-right" style="color: #009161;"></i>
+        </div>
+      </a>
+      <a ui-sref="tab.privacy" style="text-decoration:none;">
+        <div class="item item-icon-left item-icon-right">
+          <i class="icon ion-alert-circled" style="color: #fec63d;"></i>
+          Privacy Settings
+          <i class="icon ion-chevron-right" style="color: #009161;"></i>
+        </div>
+      </a>
+      <a ui-sref="tab.locationsettings" style="text-decoration:none;">
+        <div class="item item-icon-left item-icon-right">
+          <i class="icon ion-navigate" style="color: #0A60A0;"></i>
+          Location Settings
+          <i class="icon ion-chevron-right" style="color: #009161;"></i>
+        </div>
+      </a>
+      
+      <div class="item item-divider">
+        Restricted
+      </div>
+      <a ui-sref="tab.blockingsettings" style="text-decoration:none;">
+        <div class="item item-icon-left item-icon-right">
+          <i class="icon ion-close-circled" style="color: #ff3823;"></i>
+          Blocked
+          <i class="icon ion-chevron-right" style="color: #009161;"></i>
+        </div>
+      </a>
+      
+      <div class="item item-divider">
+        Legal
+      </div>
+      <a ui-sref="tab.terms" style="text-decoration:none;">
+        <div class="item item-icon-left item-icon-right">
+          <i class="icon ion-clipboard" style="color: #000;"></i>
+          Terms & Conditions
+          <i class="icon ion-chevron-right" style="color: #009161;"></i>
+        </div>
+      </a>
+      <a ui-sref="tab.terms" style="text-decoration:none;">
+        <div class="item item-icon-left item-icon-right">
+          <i class="icon ion-clipboard" style="color: #000;"></i>
+          Privacy Policy
+          <i class="icon ion-chevron-right" style="color: #009161;"></i>
+        </div>
+      </a>
+      
+      <div class="item item-divider">
+      </div>
+      <a class="item item-icon-left" href="#">
+        <i class="icon ion-power" style="color: #ff3823;" ng-click="logout()"></i>
+        Logout
+      </a>
+    </div>
+-->

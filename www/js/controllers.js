@@ -1,8 +1,8 @@
 var scalpd = angular.module('scalpd.controllers', [])
 
-scalpd.controller('ThreadCtrl', function($scope) {});
-
-//Intro Controller
+//Intro Controller used for intro slides
+//Within this controller is also the simple login with
+// login modal
 scalpd.controller('AppCtrl', function($scope, $state, $ionicSlideBoxDelegate, $ionicModal) {
  
   // Called to navigate to the main app
@@ -101,35 +101,11 @@ var users = new Firebase("https://scalpd.firebaseio.com/");
   }
 });
 
-scalpd.controller('AccountCtrl', function($scope) {
 
-});
+//This is the thread controller, this is not being used yet
+//May be able to remove this but not sure yet.
+scalpd.controller('ThreadCtrl', function($scope) {});
 
-//Add controller to add posts into firebase
-scalpd.controller('addController',function($scope,$firebaseArray, $state, postService){
-	$scope.submitPost = function(){
-		$scope.newPost = postService.all;
-		$scope.newPost.$add({
-			postTitle: $scope.postTitle,
-			postDescription: $scope.postDescription,
-      postDate: $scope.postDate
-		});
-    $scope.master= null;
-    
-      $scope.reset = function() {
-        $scope.postTitle = angular.copy($scope.master);
-        $scope.postDescription = angular.copy($scope.master);
-        $scope.postDate = angular.copy($scope.master);
-        if ($scope.form) $scope.form.$setPristine();
-      };
-      $scope.reset();
-	};
-});
-
-//Thread controller used to display all posts
-scalpd.controller('ThreadCtrl',function($scope,postService){
-	$scope.posts = postService.all;
-});
 
 //Post controller to add a modal upon button click in thread
 scalpd.controller('PostCtrl', function($scope, $ionicModal) {
@@ -152,4 +128,71 @@ scalpd.controller('PostCtrl', function($scope, $ionicModal) {
   $scope.$on('$destroy', function() {
     $scope.modal.remove();
   });
+});
+
+
+//Add controller to add posts into firebase
+scalpd.controller('addController',function($scope,$firebaseArray, $state, postService){
+	$scope.submitPost = function(){
+		$scope.newPost = postService.all;
+		$scope.newPost.$add({
+			postTitle: $scope.postTitle,
+			postDescription: $scope.postDescription,
+      postDate: $scope.postDate
+		});
+    
+    //This resets the form to master which is null
+    //Still need to apply some time of form reset
+    //to the "Cancel" button, needs troubleshooting.
+    $scope.master= null;
+    
+      $scope.reset = function() {
+        $scope.postTitle = angular.copy($scope.master);
+        $scope.postDescription = angular.copy($scope.master);
+        $scope.postDate = angular.copy($scope.master);
+        if ($scope.form) $scope.form.$setPristine();
+      };
+      $scope.reset();
+	};
+});
+
+
+//Thread controller used to display all posts.
+//This could be done better, may need to redo
+scalpd.controller('ThreadCtrl',function($scope,postService){
+	$scope.posts = postService.all;
+});
+
+
+//Edit Profile Controller this is simply setting the initial
+//title to nothing.
+scalpd.controller("ClickToEditCtrl", function($scope) {
+  $scope.title = "";
+});
+
+
+//Account Controller, this sets each account settings
+//default values and will be used to send this data
+//to firebase down the road.
+scalpd.controller('AccountCtrl', function($scope, $state, $ionicModal) {
+  
+  //Push Notification Settings
+  $scope.pushNotificationChange = function() {
+    console.log('Push Notification Change', $scope.pushNotification.checked);
+  };
+  
+  $scope.pushNotification = { checked: true };
+  
+  //Email Notification Settings
+  $scope.emailNotificationChange = function() {
+    console.log('Email Notification Change', $scope.emailNotification.checked);
+  };
+  
+  $scope.emailNotification = {checked: true};
+  
+  //Logout Functionality
+  $scope.logout = function() {
+    $state.go('login');
+  };
+  
 });

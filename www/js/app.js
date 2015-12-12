@@ -53,10 +53,18 @@ angular.module('scalpd', ['ionic', 'scalpd.controllers', 'scalpd.services', 'fir
     }
   })
 
-  .state('tab.account', {
+  .state('tab.profile', {
+    url: '/profile',
+    views: {
+      'tab-profile': {
+        templateUrl: 'templates/tab-profile.html'
+      }
+    }
+  })
+    .state('tab.account', {
     url: '/account',
     views: {
-      'tab-account': {
+      'tab-profile': {
         templateUrl: 'templates/tab-account.html',
         controller: 'AccountCtrl'
       }
