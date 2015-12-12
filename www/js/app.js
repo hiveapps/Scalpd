@@ -52,6 +52,7 @@ angular.module('scalpd', ['ionic', 'scalpd.controllers', 'scalpd.services', 'fir
       }
     }
   })
+
   .state('tab.account', {
     url: '/account',
     views: {
