@@ -72,6 +72,6 @@ angular.module('scalpd', ['ionic', 'scalpd.controllers', 'scalpd.services', 'fir
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/thread');
+  $urlRouterProvider.otherwise('/login');
 
 });
