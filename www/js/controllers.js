@@ -159,8 +159,15 @@ scalpd.controller('addController',function($scope,$firebaseArray, $state, postSe
 
 //Thread controller used to display all posts.
 //This could be done better, may need to redo
-scalpd.controller('ThreadCtrl',function($scope,postService){
+scalpd.controller('ThreadCtrl',function($scope,postService, PaypalService){
 	$scope.posts = postService.all;
+  
+  $scope.price = 25.00;
+  $scope.payPal = function( ) {  
+    PaypalService.initPaymentUI().then(function () {
+      PaypalService.makePayment($scope.price, "Total").then(...)
+    });
+   };
 });
 
 
