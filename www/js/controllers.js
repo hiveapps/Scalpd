@@ -83,7 +83,7 @@ var users = new Firebase("https://scalpd.firebaseio.com/");
       // use them in Security and Firebase Rules, and show profiles
       users.child("users").child(authData.uid).set({
         provider: authData.provider,
-        name: getName(authData)
+        email: getName(authData)
       });
     }
   });
@@ -99,6 +99,13 @@ var users = new Firebase("https://scalpd.firebaseio.com/");
         return authData.facebook.displayName;
     }
   }
+  
+  //Logout Functionality !!Need to add in "offAuth" functionality
+  //for firebase to unsync the logged session
+  $scope.logout = function() {
+    users.unauth();
+    $state.go('login');
+  };
 });
 
 
@@ -181,11 +188,5 @@ scalpd.controller('AccountCtrl', function($scope, $state, $ionicModal) {
   };
   
   $scope.pushNotification = { checked: true };
-  
-  //Logout Functionality !!Need to add in "offAuth" functionality
-  //for firebase to unsync the logged session
-  $scope.logout = function() {
-    $state.go('login');
-  };
   
 });
