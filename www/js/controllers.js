@@ -158,7 +158,7 @@ scalpr.controller('PostCtrl', function($scope, $ionicModal) {
 
 //Add controller to add posts into firebase
 scalpr.controller('addController',function($scope,$firebaseArray, $state, postService){
-	var ref = new Firebase("https://myhiveapp.firebaseio.com/");
+	var ref = new Firebase("https://scalpd.firebaseio.com/");
   var postsRef = ref.child("posts");
   $scope.submitPost = function(){
 
