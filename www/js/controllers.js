@@ -158,13 +158,16 @@ scalpr.controller('PostCtrl', function($scope, $ionicModal) {
 
 //Add controller to add posts into firebase
 scalpr.controller('addController',function($scope,$firebaseArray, $state, postService){
-	$scope.submitPost = function(){
-		$scope.newPost = postService.all;
-		$scope.newPost.$add({
-			postTitle: $scope.postTitle,
-			postDescription: $scope.postDescription,
-      postDate: $scope.postDate
-		});
+	var ref = new Firebase("https://myhiveapp.firebaseio.com/");
+  var postsRef = ref.child("posts");
+  $scope.submitPost = function(){
+
+      var newPostRef = postsRef.push();
+      newPostRef.set({
+        postTitle: $scope.postTitle,
+        postDescription: $scope.postDescription,
+        postDate: $scope.postDate
+      });
     
     //This resets the form to master which is null
     //Still need to apply some time of form reset
