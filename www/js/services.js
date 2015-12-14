@@ -1,7 +1,7 @@
-var scalpd = angular.module('scalpd.services', [])
+var scalpr = angular.module('scalpr.services', [])
 
 //Post Service
-scalpd.factory('postService', function($firebaseArray) {
+scalpr.factory('postService', function($firebaseArray) {
 	var fb = new Firebase("https://scalpd.firebaseio.com/posts");
 	var posts = $firebaseArray(fb);
 	var postService= {

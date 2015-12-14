@@ -1,9 +1,9 @@
-var scalpd = angular.module('scalpd.controllers', [])
+var scalpr = angular.module('scalpr.controllers', [])
 
 //Intro Controller used for intro slides
 //Within this controller is also the simple login with
 // login modal
-scalpd.controller('AppCtrl', function($scope, $state, $ionicSlideBoxDelegate, $ionicModal) {
+scalpr.controller('AppCtrl', function($scope, $state, $ionicSlideBoxDelegate, $ionicModal) {
  
   // Called to navigate to the main app
   $scope.next = function() {
@@ -46,7 +46,7 @@ scalpd.controller('AppCtrl', function($scope, $state, $ionicSlideBoxDelegate, $i
 });
 
 //Totally functioning simple login
-scalpd.controller("LoginCtrl", function($scope, $firebaseAuth, $state){
+scalpr.controller("LoginCtrl", function($scope, $firebaseAuth, $state){
 var users = new Firebase("https://scalpd.firebaseio.com/");
 
   $scope.register = function(username, password){
@@ -111,11 +111,11 @@ var users = new Firebase("https://scalpd.firebaseio.com/");
 
 //This is the thread controller, this is not being used yet
 //May be able to remove this but not sure yet.
-scalpd.controller('ThreadCtrl', function($scope) {});
+scalpr.controller('ThreadCtrl', function($scope) {});
 
 
 //Post controller to add a modal upon button click in thread
-scalpd.controller('PostCtrl', function($scope, $ionicModal) {
+scalpr.controller('PostCtrl', function($scope, $ionicModal) {
    
   $ionicModal.fromTemplateUrl('post-modal.html', {
     scope: $scope,
@@ -139,7 +139,7 @@ scalpd.controller('PostCtrl', function($scope, $ionicModal) {
 
 
 //Add controller to add posts into firebase
-scalpd.controller('addController',function($scope,$firebaseArray, $state, postService){
+scalpr.controller('addController',function($scope,$firebaseArray, $state, postService){
 	$scope.submitPost = function(){
 		$scope.newPost = postService.all;
 		$scope.newPost.$add({
@@ -166,21 +166,21 @@ scalpd.controller('addController',function($scope,$firebaseArray, $state, postSe
 
 //Thread controller used to display all posts.
 //This could be done better, may need to redo
-scalpd.controller('ThreadCtrl',function($scope,postService){
+scalpr.controller('ThreadCtrl',function($scope,postService){
 	$scope.posts = postService.all;
 });
 
 
 //Edit Profile Controller this is simply setting the initial
 //title to nothing.
-scalpd.controller("ClickToEditCtrl", function($scope) {
+scalpr.controller("ClickToEditCtrl", function($scope) {
   $scope.title = "";
 });
 
 
 //Account Controller, this allows the user to toggle their
 //push notifications and also registers their logout.
-scalpd.controller('AccountCtrl', function($scope, $state, $ionicModal) {
+scalpr.controller('AccountCtrl', function($scope, $state, $ionicModal) {
   
   //Push Notification Settings
   $scope.pushNotificationChange = function() {
