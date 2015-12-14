@@ -1,5 +1,9 @@
 <ion-view view-title="Scalpr">
 	
+	<!-- These are the Navigation Buttons in the header of the login pages
+	The Previous button is programmed to only show up if the slideIndex is greater than 0
+	The Next button is programmed to only show up if the slideIndex is not equal to 4
+	This is all configured in the "ng-show" parameter -->
 	<ion-nav-buttons side="left">
 		<button class="button button-positive button-clear" ng-click="previous()" ng-show="slideIndex > 0">
 		Previous
@@ -11,10 +15,15 @@
 		Next
 		</button>
 	</ion-nav-buttons>
+	<!-- End of the Header Navigation Buttons -->
+	
+	<!-- Beginning of Content Area -->
 	<ion-content>
+		
+		<!-- This is the beggining of the Intro Slide Boxes -->
 		<ion-slide-box class="has-header" on-slide-changed="slideChanged(index)" show-pager="false">
 			
-			<!-- Slide 1 -->
+			<!-- Beginning of Slide Box 1 -->
 			<ion-slide>
 				<h3 style="text-align: center;">Thank you for choosing Scalpr!</h3>
 				
@@ -23,10 +32,10 @@
 				<div id="logo" style="text-align: center;">
 					<img src="img/Wink Logo.svg">
 				</div>
-				
 			</ion-slide>
+			<!-- End of 1st Slide Box -->
 			
-			<!-- Slide 2 -->
+			<!-- Beginning of Slide Box 2 -->
 			<ion-slide>
 				<h3 style="text-align: center;">Our Goal</h3>
 			
@@ -36,8 +45,9 @@
 					<img src="img/nearby.PNG" style="width: 50%; height: 50%;">
 				</div>
 			</ion-slide>
+			<!-- End of 2nd Slide Box -->
 			
-			<!-- Slide 3 -->
+			<!-- Beginning of Slide Box 3 -->
 			<ion-slide>
 				<h3 style="text-align: center;">Understanding The Thread</h3>
 				
@@ -47,8 +57,9 @@
 					<img src="img/thread.PNG" style="width: 50%; height: 50%;">
 				</div>
 			</ion-slide>
+			<!-- End of 3rd Slide box -->
 			
-			<!-- Slide 4 -->
+			<!-- Beginning of Slide Box 4 -->
 			<ion-slide>
 				<h3 style="text-align: center;">Buying Reservations</h3>
 				
@@ -58,27 +69,39 @@
 					<img src="img/profile.PNG" style="width: 50%; height: 50%;">
 				</div>
 			</ion-slide>
+			<!-- End of 4th Slide Box -->
 			
-			<!-- Slide 5 -->
+			
+			<!-- Beginning of Slide Box 5 -->
 			<ion-slide>
 				<h3 style="text-align: center;">Don't be shy, Get Connected!</h3>
 				
+				<!-- Screenshot of app -->
 				<div id="logo">
 					<img src="img/Wink Logo.svg" class="full-image">
 				</div>
 				
+				<!-- Login/Sign Up button is here, this just opens a Login/Sign Up modal
+				it does not attempt to authenticate the user -->
 				<label class="item" style="border: none; background-color: transparent;">
 					<button class="button button-block button-positive" ng-click="openModal()">
-					Login
+					Login/Sign Up
 					</button>
 				</label>
+				<!-- End of Login/Sign Up button -->
 				
+				
+				<!-- Restart Tutorial Link starts here -->
 				<label class="item" style="border: none; margin-top: -10%; text-align: center; background-color: transparent;" ng-show="slideIndex === 4">
 					<button class="button button-positive button-clear" ng-click="restart()" style="color: #387ef5;">
 						Restart Tutorial
 					</button>
 				</label>
+				<!-- End of Restart Tutorial link -->
 				
+				
+				<!-- This is the login Modal which includes an email and password form
+				along with "Login" and "Sign Up" buttons -->
 				<script id="login-modal.html" type="text/ng-template">
 					<div class="modal">
 					
@@ -105,43 +128,46 @@
 								Login 
 							</button>
 							<button ng-click="register(username, password)" class="button button-block button-dark"> 
-								Register 
+								Sign Up 
 							</button>
+							
+							<!--<button ng-click="resetPass()" class="button button-block button-dark"> 
+								Reset Password 
+							</button>-->
 						
 						</ion-content>
 					</div>
 					</script>
+					<!-- End of Login Modal Script -->
 	
+
 			</ion-slide>
-		
+			<!-- End of 5th slide box -->
+			
+			
 		</ion-slide-box>
+		<!-- End of Intro Slide Boxes -->
+		
+		
+		<!-- This is where the "Skip Tutorial" link is -->
 		<label class="item" style="border: none; margin-top: -5%; text-align: center; background-color: transparent;" ng-show="slideIndex != 4">
-			<button class="button button-positive button-clear" ng-click="skip()" style="color: #387ef5;">
+			<button class="button button-clear" ng-click="skip()" style="color: #387ef5;">
 				Skip Tutorial
 			</button>
 		</label>
+		<!-- End of Skip Tutorial link -->
+	
 	</ion-content>
-	<!--<ion-content>
-		<ion-slide-box on-slide-changed="slideHasChanged($index)" does-continue="true">
-			<ion-slide>
-				<img src="img/Wink Logo.svg" class="full-image">
-			</ion-slide>
-			<ion-slide>
-				<div class="box yellow"><h1>YELLOW</h1></div>
-			</ion-slide>
-			<ion-slide>
-				<div class="box pink"><h1>PINK</h1></div>
-			</ion-slide>
-		</ion-slide-box>
-		<label class="item" style="border: none;">
-			<button class="button button-block button-positive" ng-click="login()">
-			Login with Facebook
-			</button>
-		</label>
-	</ion-content> -->
+	<!-- End of content area -->
+	
 </ion-view>
+<!-- End of entire View area -->
 
 
+
+<!-- This is the beginning of all sample code for other logins that were tested
+including facebook and simple logins -->
+<!-- ------------------------------------------------------------------------------------ -->
 <!--<ion-view view-title="Login">
 	<ion-content ng-controller="AppCtrl">
 		<div class="row">

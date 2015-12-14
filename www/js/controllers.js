@@ -100,6 +100,25 @@ var users = new Firebase("https://scalpd.firebaseio.com/");
     }
   }
   
+  //Reset password functionality
+  //$scope.resetPass = function(username){
+  //  users.resetPassword({
+  //    email: username
+  //  }, function(error) {
+  //    if (error) {
+  //      switch (error.code) {
+  //        case "INVALID_USER":
+  //          console.log("The specified user account does not exist.");
+  //          break;
+  //        default:
+  //          console.log("Error resetting password:", error);
+  //      }
+  //    } else {
+  //      console.log("Password reset email sent successfully!");
+  //    }
+  //  });
+  //};
+  
   //Logout Functionality !!Need to add in "offAuth" functionality
   //for firebase to unsync the logged session
   $scope.logout = function() {
