@@ -92,7 +92,7 @@ var users = new Firebase("https://scalpd.firebaseio.com/");
   function getName(authData) {
     switch(authData.provider) {
       case 'password':
-        return authData.password.email.replace(/@.*/, '');
+        return authData.password.email;
       case 'twitter':
         return authData.twitter.displayName;
       case 'facebook':
@@ -119,8 +119,7 @@ var users = new Firebase("https://scalpd.firebaseio.com/");
   //  });
   //};
   
-  //Logout Functionality !!Need to add in "offAuth" functionality
-  //for firebase to unsync the logged session
+  //Logout Functionality
   $scope.logout = function() {
     users.unauth();
     $state.go('login');

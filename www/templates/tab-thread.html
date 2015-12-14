@@ -1,7 +1,7 @@
 <ion-view view-title="Available">
   <ion-nav-buttons side="right">
     <a ng-controller="PostCtrl" ng-click="openModal()">    
-      <button class="button button-icon button-clear ion-compose" style="color: #000000;">
+      <button class="button button-icon button-clear ion-compose" id="postBtn" style="color: #000000;">
       </button>
     </a>
   </ion-nav-buttons>
@@ -12,7 +12,7 @@
       <div class="item item-avatar">
         <img src="mcfly.jpg">
         <h2>{{post.postTitle}}</h2>
-        <p>Saturday, February 14 - 6:00pm</p>
+        <p>{{post.postDate}}</p>
       </div>
     
       <div class="item item-body" style="padding-left: 0px; padding-right: 0px;">
